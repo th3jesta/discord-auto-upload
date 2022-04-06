@@ -20,8 +20,8 @@ import (
 	"image/jpeg"
 
 	"github.com/fogleman/gg"
-	"github.com/th3jesta/discord-auto-upload/config"
-	daulog "github.com/th3jesta/discord-auto-upload/log"
+	"github.com/tardisx/discord-auto-upload/config"
+	daulog "github.com/tardisx/discord-auto-upload/log"
 	"golang.org/x/image/font/inconsolata"
 )
 
