@@ -20,6 +20,7 @@ type ConfigV1 struct {
 	Username    string
 	NoWatermark bool
 	Exclude     string
+	Compress    bool
 }
 
 type Watcher struct {
@@ -29,6 +30,7 @@ type Watcher struct {
 	NoWatermark bool
 	HoldUploads bool
 	Exclude     []string
+	Compress    bool
 }
 
 type ConfigV2 struct {
@@ -77,6 +79,7 @@ func DefaultConfig() *ConfigV2 {
 		Username:    "",
 		NoWatermark: false,
 		Exclude:     []string{},
+		Compress:    false,
 	}
 	c.Watchers = []Watcher{w}
 	return &c
@@ -117,6 +120,7 @@ func (c *ConfigService) Load() error {
 			Username:    configV1.Username,
 			NoWatermark: configV1.NoWatermark,
 			Exclude:     strings.Split(configV1.Exclude, " "),
+			Compress:    configV1.Compress,
 		}
 
 		c.Config.Watchers = []Watcher{onlyWatcher}

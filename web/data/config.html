@@ -113,6 +113,15 @@
 
         <div class="form-row align-items-center">
           <div class="col-sm-6 my-1">
+            <span>Compress</span>
+          </div>
+          <div class="col-sm-6 my-1">
+            <button type="button" @click="config.Watchers[i].Compress = ! config.Watchers[i].Compress" class="btn btn-success" x-text="watcher.Compress ? 'JPEG Disabled' : 'JPEG Enabled'"></button>
+          </div>
+        </div>
+
+        <div class="form-row align-items-center">
+          <div class="col-sm-6 my-1">
             <span>Hold Uploads</span>
           </div>
           <div class="col-sm-6 my-1">

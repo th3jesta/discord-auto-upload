@@ -17,10 +17,11 @@ import (
 	"path/filepath"
 	"sync/atomic"
 	"time"
+	"image/jpeg"
 
 	"github.com/fogleman/gg"
-	"github.com/tardisx/discord-auto-upload/config"
-	daulog "github.com/tardisx/discord-auto-upload/log"
+	"github.com/th3jesta/discord-auto-upload/config"
+	daulog "github.com/th3jesta/discord-auto-upload/log"
 	"golang.org/x/image/font/inconsolata"
 )
 
@@ -84,6 +85,7 @@ func (u *Uploader) AddFile(file string, conf config.Watcher) {
 		webhookURL:       conf.WebHookURL,
 		usernameOverride: conf.Username,
 		State:            StateQueued,
+		compress:         conf.Compress,
 	}
 	// if the user wants uploads to be held for editing etc,
 	// set it to Pending instead
@@ -177,6 +179,13 @@ func (u *Upload) processUpload() error {
 		if u.watermark {
 			daulog.Info("Watermarking image")
 			imageData, err = u.applyWatermark(filedata)
+			if u.compress {
+				err = jpeg.Encode(imageData, imageData, 90)
+				if err != nil {
+					fmt.Println(err)
+					os.Exit(1)
+				}
+			}
 			if err != nil {
 				daulog.Errorf("Error watermarking: %s", err)
 				retriesRemaining--
@@ -185,6 +194,13 @@ func (u *Upload) processUpload() error {
 			}
 		} else {
 			imageData = filedata
+			if u.compress {
+				err = jpeg.Encode(imageData, imageData, 90)
+				if err != nil {
+					fmt.Println(err)
+					os.Exit(1)
+				}
+			}
 		}
 
 		request, err := newfileUploadRequest(u.webhookURL, extraParams, "file", baseFilename, imageData)
