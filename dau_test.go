@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/th3jesta/discord-auto-upload/config"
-	"github.com/th3jesta/discord-auto-upload/upload"
+	"github.com/tardisx/discord-auto-upload/config"
+	"github.com/tardisx/discord-auto-upload/upload"
 )
 
 func TestWatchNewFiles(t *testing.T) {

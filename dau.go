@@ -17,13 +17,13 @@ import (
 
 	// "github.com/skratchdot/open-golang/open"
 
-	"github.com/th3jesta/discord-auto-upload/config"
-	daulog "github.com/th3jesta/discord-auto-upload/log"
-	"github.com/th3jesta/discord-auto-upload/upload"
+	"github.com/tardisx/discord-auto-upload/config"
+	daulog "github.com/tardisx/discord-auto-upload/log"
+	"github.com/tardisx/discord-auto-upload/upload"
 
 	// "github.com/tardisx/discord-auto-upload/upload"
-	"github.com/th3jesta/discord-auto-upload/version"
-	"github.com/th3jesta/discord-auto-upload/web"
+	"github.com/tardisx/discord-auto-upload/version"
+	"github.com/tardisx/discord-auto-upload/web"
 )
 
 type watch struct {
