@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	daulog "github.com/tardisx/discord-auto-upload/log"
+	daulog "github.com/th3jesta/discord-auto-upload/log"
 
 	"github.com/mitchellh/go-homedir"
 )
